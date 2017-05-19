@@ -11,6 +11,7 @@ Meteor.methods({
 
     // Generate random to token to assign to url
     const token = Math.random().toString(36).slice(-5);
+    
     // Ready to save url
     Links.insert({ url, token, clicks: 0 });
   }
