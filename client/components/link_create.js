@@ -4,9 +4,11 @@ class LinkCreate extends Component {
   handleSubmit(event) {
     // prevent browser default behavior
     event.preventDefault();
-    
+
     // refs: reference => ref attribute on input tag
-    console.log(this.refs.input.value);
+    // console.log(this.refs.input.value);
+    // Call our Meteor Methiod
+    Meteor.call('links.insert', this.refs.input.value);
   }
 
   render() {
