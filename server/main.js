@@ -23,6 +23,12 @@ function onRoute(req, res, next) {
   const link = Links.findOne({ token: req.params.token });
 
   if (link) {
+    // Use Mongo Modifiers to increment link counter.
+    // Mongo Modifiers: JS objects that describe a precise opertaion
+    // to take on a record being updated in a mongo databse.
+    // $inc => increment
+    Links.update(link, { $inc: { clicks: 1} });
+
     // If we find a link object, redirect user to the long URL
     // 307 is the redirect
     res.writeHead(307, { 'Location': link.url});
